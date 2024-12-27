@@ -29,14 +29,29 @@ fn android_main(
 
 struct MyApp {
     name: String,
-    age: u32,
+    error: Option<String>,
 }
 
 impl Default for MyApp {
     fn default() -> Self {
         Self {
             name: "Arthur".to_owned(),
-            age: 42,
+            error: None,
+        }
+    }
+}
+
+impl MyApp {
+    fn unwrap_or_show_error<T>(&mut self, result: Result<T, arboard::Error>) -> Option<T> {
+        match result {
+            Ok(value) => {
+                self.error = None;
+                Some(value)
+            }
+            Err(error) => {
+                self.error = Some(error.to_string());
+                None
+            }
         }
     }
 }
@@ -62,15 +77,23 @@ impl eframe::App for MyApp {
             }
 
             if ui.button("copy to clipboard").clicked() {
-                arboard::Clipboard::new()
-                    .unwrap()
-                    .set_text(self.name.clone());
+                self.unwrap_or_show_error(
+                    arboard::Clipboard::new()
+                        .unwrap()
+                        .set_text(self.name.clone()),
+                );
             }
 
             if ui.button("copy from clipboard").clicked() {
-                if let Ok(text) = arboard::Clipboard::new().unwrap().get_text() {
-                    self.name = text;
+                if let Some(value) =
+                    self.unwrap_or_show_error(arboard::Clipboard::new().unwrap().get_text())
+                {
+                    self.name = value;
                 }
+            }
+
+            if let Some(error) = &self.error {
+                ui.colored_label(egui::Color32::RED, error);
             }
         });
     }
