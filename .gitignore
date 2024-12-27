@@ -1,2 +1,5 @@
 rust/target/
-.gradle/
+java/.gradle/
+java/app/build/
+java/app/src/main/jniLibs/
+
