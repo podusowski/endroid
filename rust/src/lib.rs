@@ -49,8 +49,22 @@ impl eframe::App for MyApp {
             ui.label("Clipboard");
             ui.text_edit_singleline(&mut self.name);
 
-            if ui.button("get").clicked() {
-                self.age += 1;
+            if ui.button("clear").clicked() {
+                self.name.clear();
+            }
+
+            if ui.button("foo").clicked() {
+                self.name = "foo".to_owned();
+            }
+
+            if ui.button("bar").clicked() {
+                self.name = "bar".to_owned();
+            }
+
+            if ui.button("copy to clipboard").clicked() {
+            }
+
+            if ui.button("copy from clipboard").clicked() {
             }
         });
     }
