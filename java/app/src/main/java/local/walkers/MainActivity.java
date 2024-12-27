@@ -1,4 +1,4 @@
-package local.walkers;
+package local.endroid;
 
 import android.os.Bundle;
 import android.util.Log;

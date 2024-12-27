@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace "local.walkers"
+    namespace "local.endroid"
     compileSdk 31
 
     defaultConfig {
