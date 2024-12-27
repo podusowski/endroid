@@ -92,6 +92,10 @@ impl eframe::App for MyApp {
                 }
             }
 
+            if ui.button("clear clipboard").clicked() {
+                self.unwrap_or_show_error(arboard::Clipboard::new().unwrap().clear());
+            }
+
             if let Some(error) = &self.error {
                 ui.colored_label(egui::Color32::RED, error);
             }
