@@ -62,9 +62,15 @@ impl eframe::App for MyApp {
             }
 
             if ui.button("copy to clipboard").clicked() {
+                arboard::Clipboard::new()
+                    .unwrap()
+                    .set_text(self.name.clone());
             }
 
             if ui.button("copy from clipboard").clicked() {
+                if let Ok(text) = arboard::Clipboard::new().unwrap().get_text() {
+                    self.name = text;
+                }
             }
         });
     }
