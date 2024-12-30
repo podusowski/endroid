@@ -2,6 +2,7 @@
 plugins {
     id 'com.android.application' version '8.4.1' apply false
     id 'com.android.library' version '8.4.1' apply false
+    id "org.mozilla.rust-android-gradle.rust-android" version "0.9.5"
 }
 
 task clean(type: Delete) {
