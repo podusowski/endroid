@@ -192,6 +192,22 @@ dependencies = [
 [[package]]
 name = "arboard"
 version = "3.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "df099ccb16cd014ff054ac1bf392c67feeef57164b05c42f037cd40f5d4357f4"
+dependencies = [
+ "clipboard-win",
+ "log",
+ "objc2",
+ "objc2-app-kit",
+ "objc2-foundation",
+ "parking_lot",
+ "x11rb",
+]
+
+[[package]]
+name = "arboard"
+version = "3.4.1"
+source = "git+https://github.com/podusowski/arboard.git?branch=android#76fa105f1c7623ceb9cb08436dda1563f5401c3a"
 dependencies = [
  "clipboard-win",
  "core-graphics",
@@ -204,21 +220,6 @@ dependencies = [
  "objc2-foundation",
  "parking_lot",
  "windows-sys 0.48.0",
- "x11rb",
-]
-
-[[package]]
-name = "arboard"
-version = "3.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df099ccb16cd014ff054ac1bf392c67feeef57164b05c42f037cd40f5d4357f4"
-dependencies = [
- "clipboard-win",
- "log",
- "objc2",
- "objc2-app-kit",
- "objc2-foundation",
- "parking_lot",
  "x11rb",
 ]
 
@@ -984,7 +985,7 @@ name = "endroid"
 version = "0.1.0"
 dependencies = [
  "android_logger",
- "arboard 3.4.1",
+ "arboard 3.4.1 (git+https://github.com/podusowski/arboard.git?branch=android)",
  "eframe",
  "egui-winit",
  "jni",

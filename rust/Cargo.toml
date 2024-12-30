@@ -11,7 +11,7 @@ egui-winit = "0.29"
 ndk-context = "0.1"
 jni = "0.21"
 thiserror = "2.0.3"
-arboard = { path = "../../arboard" }
+arboard = { git = "https://github.com/podusowski/arboard.git", branch = "android" }
 
 [lib]
 name = "main"
