@@ -1,5 +1,3 @@
-rust/target/
-java/.gradle/
-java/app/build/
-java/app/src/main/jniLibs/
-
+.gradle/
+app/build/
+app/src/main/jniLibs/
